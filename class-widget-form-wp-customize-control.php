@@ -24,35 +24,38 @@ class Widget_Form_WP_Customize_Control extends WP_Customize_Control {
 		$multi_number = isset($sidebar_args['_multi_num']) ? $sidebar_args['_multi_num'] : '';
 		$add_new = '';
 		?>
-		<label>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-		</label>
-		<div class="customize-control-content">
-			<fieldset class="widget-content">
-			<?php
-			if ( isset( $control['callback'] ) ) {
-				$has_form = call_user_func_array( $control['callback'], $control['params'] );
-			}
-			else {
-				echo "\t\t<p>" . __( 'There are no options for this widget.', 'widget-customizer' ) . "</p>\n";
-			}
-			?>
-			</fieldset>
-			<input type="hidden" name="widget-id" class="widget-id" value="<?php echo esc_attr( $this->widget_id ); ?>" />
-			<input type="hidden" name="id_base" class="id_base" value="<?php echo esc_attr($id_base); ?>" />
-			<input type="hidden" name="sidebar" class="sidebar" value="<?php echo esc_attr($this->sidebar_id); ?>" />
-			<input type="hidden" name="widget-width" class="widget-width" value="<?php if (isset( $control['width'] )) echo esc_attr($control['width']); ?>" />
-			<input type="hidden" name="widget-height" class="widget-height" value="<?php if (isset( $control['height'] )) echo esc_attr($control['height']); ?>" />
-			<input type="hidden" name="widget_number" class="widget_number" value="<?php echo esc_attr($widget_number); ?>" />
-			<input type="hidden" name="multi_number" class="multi_number" value="<?php echo esc_attr($multi_number); ?>" />
-			<input type="hidden" name="add_new" class="add_new" value="<?php echo esc_attr($add_new); ?>" />
+		<div class="widget">
+			<label class="widget-top">
+				<h4 class="customize-control-title"><?php echo esc_html( $this->label ); ?><a class="widget-action"></a></h4>
+			</label>
+			<!-- need to remove display:block -->
+			<div class="customize-control-content widget-inside" style="display:block;"">
+				<fieldset class="widget-content">
+				<?php
+				if ( isset( $control['callback'] ) ) {
+					$has_form = call_user_func_array( $control['callback'], $control['params'] );
+				}
+				else {
+					echo "\t\t<p>" . __( 'There are no options for this widget.', 'widget-customizer' ) . "</p>\n";
+				}
+				?>
+				</fieldset>
+				<input type="hidden" name="widget-id" class="widget-id" value="<?php echo esc_attr( $this->widget_id ); ?>" />
+				<input type="hidden" name="id_base" class="id_base" value="<?php echo esc_attr($id_base); ?>" />
+				<input type="hidden" name="sidebar" class="sidebar" value="<?php echo esc_attr($this->sidebar_id); ?>" />
+				<input type="hidden" name="widget-width" class="widget-width" value="<?php if (isset( $control['width'] )) echo esc_attr($control['width']); ?>" />
+				<input type="hidden" name="widget-height" class="widget-height" value="<?php if (isset( $control['height'] )) echo esc_attr($control['height']); ?>" />
+				<input type="hidden" name="widget_number" class="widget_number" value="<?php echo esc_attr($widget_number); ?>" />
+				<input type="hidden" name="multi_number" class="multi_number" value="<?php echo esc_attr($multi_number); ?>" />
+				<input type="hidden" name="add_new" class="add_new" value="<?php echo esc_attr($add_new); ?>" />
 
-			<div class="widget-control-actions">
-				<div class="alignright<?php if ( 'noform' === $has_form ) echo ' widget-control-noform'; ?>">
-					<input type="button" name="updatewidget" id="updatewidget" class="button button-secondary widget-control-update right" value="<?php esc_attr_e( 'Update', 'widget-customizer' ) ?>">
-					<span class="spinner"></span>
+				<div class="widget-control-actions">
+					<div class="alignright<?php if ( 'noform' === $has_form ) echo ' widget-control-noform'; ?>">
+						<input type="button" name="updatewidget" id="updatewidget" class="button button-secondary widget-control-update right" value="<?php esc_attr_e( 'Update', 'widget-customizer' ) ?>">
+						<span class="spinner"></span>
+					</div>
+					<br class="clear" />
 				</div>
-				<br class="clear" />
 			</div>
 		</div>
 		<?php
