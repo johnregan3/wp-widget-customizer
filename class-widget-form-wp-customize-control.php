@@ -25,11 +25,18 @@ class Widget_Form_WP_Customize_Control extends WP_Customize_Control {
 		$add_new = '';
 		?>
 		<div class="widget">
-			<label class="widget-top">
-				<h4 class="customize-control-title"><?php echo esc_html( $this->label ); ?><a class="widget-action"></a></h4>
-			</label>
+			<div class="widget-top">
+				<div class="widget-title-action">
+					<a class="widget-action"></a>
+				</div>
+				<div class="widget-title">
+					<h4 class="customize-control-title">
+						<?php echo esc_html( $this->label ); ?>
+					</h4>
+				</div>
+			</div>
 			<!-- need to remove display:block -->
-			<div class="customize-control-content widget-inside" style="display:block;"">
+			<div class="customize-control-content widget-inside">
 				<fieldset class="widget-content">
 				<?php
 				if ( isset( $control['callback'] ) ) {

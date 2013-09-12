@@ -9,3 +9,7 @@
 	-ms-user-select: none;
 	user-select: none;
 }
+
+.customize-control-widget_form .widget {
+	margin-bottom: 0;
+}
